@@ -18,7 +18,12 @@ const store = configureStore({
     },
     status: {
       list: {
-        items: [{ name: "Active" }, { name: "Inactive" }],
+        items: [
+          { name: "PENDING" },
+          { name: "REQUESTING" },
+          { name: "SUCCESS" },
+          { name: "ERROR" },
+        ],
       },
     },
   },
