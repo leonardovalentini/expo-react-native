@@ -29,18 +29,6 @@ const stylesFn = () => {
       marginBottom: 16,
       backgroundColor: "#f9f9f9",
     },
-    button: {
-      backgroundColor: "#007AFF",
-      paddingVertical: 14,
-      borderRadius: 8,
-      alignItems: "center",
-      marginTop: 10,
-    },
-    buttonText: {
-      color: "#fff",
-      fontSize: 16,
-      fontWeight: "bold",
-    },
   });
 };
 

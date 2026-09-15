@@ -7,6 +7,7 @@ const stylesFn = () => {
       backgroundColor: "#fff",
       flexGrow: 1,
     },
+    emptyText: { flexGrow: 1 },
   });
 };
 

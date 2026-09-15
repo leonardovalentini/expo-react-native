@@ -4,13 +4,15 @@ import { useListCustomers } from "../hooks";
 import { useAppNavigation } from "../../../navigation";
 
 import Row from "./row";
+import stylesFn from "./styles";
 
 const List = ({ region, status }: { region?: string; status?: string }) => {
   const { navigate } = useAppNavigation();
   const customers = useListCustomers({ region, status });
+  const styles = stylesFn();
 
   return (
-    <View>
+    <View style={styles.container}>
       {customers && customers.length > 0 ? (
         <FlatList
           data={customers || []}
@@ -18,7 +20,7 @@ const List = ({ region, status }: { region?: string; status?: string }) => {
           keyExtractor={(item) => `${item.id}`}
         />
       ) : (
-        <Text>{"No Customers"}</Text>
+        <Text style={styles.emptyText}>{"No Customers"}</Text>
       )}
       <Button
         title={"Add Customer"}

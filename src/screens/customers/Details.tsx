@@ -18,7 +18,7 @@ const Details = () => {
       contentContainerStyle={{
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
-        paddingHorizontal: 16,
+        flexGrow: 1,
       }}
     >
       <Form customer={customer} disabled />

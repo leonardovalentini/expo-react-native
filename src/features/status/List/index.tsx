@@ -4,12 +4,14 @@ import { useListStatus } from "../hooks";
 import Title from "../../../components/Title";
 
 import Row from "./row";
+import stylesFn from "./styles";
 
 const List = () => {
   const status = useListStatus();
+  const styles = stylesFn();
 
   return (
-    <View>
+    <View style={styles.container}>
       <Title text="Status" />
       {status && status.length > 0 ? (
         <FlatList

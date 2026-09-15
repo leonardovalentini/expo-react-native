@@ -11,7 +11,7 @@ export default function Welcome() {
       contentContainerStyle={{
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
-        paddingHorizontal: 16,
+        flexGrow: 1,
       }}
     >
       <WelcomeFeature />

@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { Picker } from "@react-native-picker/picker";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 
 import { useUpdateFields, useNewCustomer, useUpdateCustomer } from "../hooks";
 import { useListRegions, useListStatus } from "../../regions/hooks";
 import { Customer } from "../model";
 import { useAppNavigation } from "../../../navigation";
+import Button from "../../../components/Button";
+import TextBox from "../../../components/TextBox";
 
 import stylesFn from "./styles";
 
@@ -39,6 +41,11 @@ const Form = ({
   const styles = stylesFn();
 
   const onSubmit = () => {
+    if (disabled) {
+      navigateUpdateCustomer();
+      return;
+    }
+
     if (!customer) {
       onSubmitNew();
     } else {
@@ -60,8 +67,8 @@ const Form = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Full Name *</Text>
-      <TextInput
+      <Text style={styles.label}>Full Name</Text>
+      <TextBox
         key={"full_name"}
         style={styles.input}
         placeholder="John Doe"
@@ -69,8 +76,8 @@ const Form = ({
         onChangeText={(v) => setFormField("full_name", v)}
         readOnly={disabled}
       />
-      <Text style={styles.label}>Email Address *</Text>
-      <TextInput
+      <Text style={styles.label}>Email Address</Text>
+      <TextBox
         key={"email"}
         style={styles.input}
         placeholder="john@example.com"
@@ -81,7 +88,7 @@ const Form = ({
         readOnly={disabled}
       />
       <Text style={styles.label}>Phone Number</Text>
-      <TextInput
+      <TextBox
         key={"phone"}
         style={styles.input}
         placeholder="(555) 000-0000"
@@ -91,7 +98,7 @@ const Form = ({
         readOnly={disabled}
       />
       <Text style={styles.label}>Company Name</Text>
-      <TextInput
+      <TextBox
         key={"company"}
         style={styles.input}
         placeholder="Acme Corp"
@@ -104,7 +111,7 @@ const Form = ({
         selectedValue={regionValue || ""}
         onValueChange={(v) => setFormField("region", v || "")}
         style={styles.input}
-        enabled={!disabled && !region}
+        enabled={!disabled}
       >
         <Picker.Item label={""} value={null} />
         {regions.map((region) => (
@@ -121,7 +128,7 @@ const Form = ({
         selectedValue={statusValue || ""}
         onValueChange={(v) => setFormField("status", v || "")}
         style={styles.input}
-        enabled={!disabled && !status}
+        enabled={!disabled}
       >
         <Picker.Item label={""} value={null} />
         {statusOptions.map((statusOption) => (
@@ -132,19 +139,10 @@ const Form = ({
           />
         ))}
       </Picker>
-      {!disabled && (
-        <TouchableOpacity style={styles.button} onPress={onSubmit}>
-          <Text style={styles.buttonText}>Save Customer</Text>
-        </TouchableOpacity>
-      )}
-      {disabled && (
-        <TouchableOpacity
-          style={styles.button}
-          onPress={navigateUpdateCustomer}
-        >
-          <Text style={styles.buttonText}>Edit Customer</Text>
-        </TouchableOpacity>
-      )}
+      <Button
+        text={!disabled ? "Save Customer" : "Edit Customer"}
+        onPress={onSubmit}
+      />
     </View>
   );
 };

@@ -16,7 +16,7 @@ const List = () => {
       contentContainerStyle={{
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
-        paddingHorizontal: 16,
+        flexGrow: 1,
       }}
     >
       <CustomersList region={region} status={status} />

@@ -40,12 +40,19 @@ function CustomersStackScreen() {
         options={(props) => {
           const { params } = props.route;
           let region = "";
+          let status = "";
           if (params && (params as { region: string }).region) {
             region = (params as { region: string }).region;
           }
-          const title = region
-            ? `Customers List for ${region}`
-            : "Customers List";
+          if (params && (params as { status: string }).status) {
+            status = (params as { status: string }).status;
+          }
+          let title = "Customers List";
+          if (region) {
+            title = `Customers List for ${region}`;
+          } else if (status) {
+            title = `Customers List with ${status.toLocaleLowerCase()} status`;
+          }
           return {
             title,
           };

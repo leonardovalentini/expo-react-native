@@ -71,3 +71,11 @@ export const useListCustomers = ({
 
   return useAppSelector((state) => state.customers.list.items);
 };
+
+export const useClearCustomerList = () => {
+  const dispatch = useAppDispatch();
+
+  return () => {
+    return dispatch(actions.clearCustomerList());
+  };
+};

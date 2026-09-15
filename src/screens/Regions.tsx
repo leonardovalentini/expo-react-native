@@ -11,7 +11,7 @@ export default function Regions() {
       contentContainerStyle={{
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
-        paddingHorizontal: 16,
+        flexGrow: 1,
       }}
     >
       <RegionsList />

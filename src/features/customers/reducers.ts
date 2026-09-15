@@ -96,6 +96,14 @@ const reducers = {
   ) => {
     state.list.items = payload;
   },
+  clearCustomerList: (state: CustomerState) => {},
+  clearCustomerListSuccess: (state: CustomerState) => {
+    state.list.items = [];
+  },
+  clearCustomerListError: (
+    state: CustomerState,
+    { payload }: PayloadAction<unknown>,
+  ) => {},
 };
 
 const slice = createSlice({
@@ -114,6 +122,9 @@ export const {
   loadCustomers,
   loadResult,
   setForm,
+  clearCustomerList,
+  clearCustomerListSuccess,
+  clearCustomerListError,
 } = slice.actions;
 
 export default slice.reducer;

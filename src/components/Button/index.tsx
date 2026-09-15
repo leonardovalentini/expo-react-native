@@ -9,14 +9,14 @@ const Button = ({
 }: {
   onPress: () => void;
   text: string;
-  disabled: boolean;
+  disabled?: boolean;
 }) => {
   const styles = stylesFn({ disabled: disabled });
 
   return (
     <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View style={styles.button}>
-        <Text style={styles.text}>{text}</Text>
+        <Text style={styles.buttonText}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
